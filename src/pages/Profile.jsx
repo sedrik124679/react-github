@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {GitHubContext} from "../context/github/GitHubContext";
 import Loader from "../components/loader/loader";
 import {Link} from "react-router-dom";
+import Repos from "../components/Repos/Repos";
 
 const Profile = ({match}) => {
 
@@ -28,7 +29,6 @@ const Profile = ({match}) => {
     return (
 
         <>
-
             <Link to='/' className='btn btn-link'>To main page</Link>
 
             <div className="card mb-4">
@@ -66,7 +66,7 @@ const Profile = ({match}) => {
                     </div>
                 </div>
             </div>
-            {repos.join()}
+            <Repos repos={repos}/>
         </>
     );
 };
