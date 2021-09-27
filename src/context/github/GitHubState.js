@@ -38,6 +38,7 @@ export const GitHubState = ({children}) => {
         const response = await axios.get(
             withCreds(`https://api.github.com/users/${name}?`)
         )
+        console.log(response.data)
 
         dispatch({
             type: GET_USER,
@@ -46,7 +47,7 @@ export const GitHubState = ({children}) => {
     }
     const getRepos = async name => {
         setLoading()
-
+        debugger
         const response = await axios.get(
             withCreds(`https://api.github.com/users/${name}/repos?per_page=5&`)
         )
