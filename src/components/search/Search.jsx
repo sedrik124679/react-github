@@ -1,17 +1,24 @@
 import React, {useContext, useState} from 'react';
 import {AlertContext} from "../../context/alertContext/AlertContext";
+import {GitHubContext} from "../../context/github/GitHubContext";
 
 const Search = () => {
     const [value, setValue] = useState('')
-    const {show} = useContext(AlertContext)
+    const alert = useContext(AlertContext)
+    const github = useContext(GitHubContext)
+
     const onSubmit = (event) => {
         if(event.key !== 'Enter'){
             return
         }
+
+        github.clearUsers()
+
         if (value.trim()) {
-            console.log('make request to api', value)
+            alert.hide()
+            github.search(value.trim())
         } else {
-            show('Будь ласка, введіть дані користувача!')
+            alert.show('Будь ласка, введіть дані користувача!')
         }
     }
 
